@@ -1,0 +1,32 @@
+
+scalar Name;
+scalar Adress;
+
+# should name/address be stored canonically or as glob string with parser?
+# address needs to at least be separated by line, as newLine characters will break things 
+type Donor {
+  name: Name!;
+  email: String;
+  address: Adress!;
+  donations: [Donation!]!
+}
+
+type Donation {
+  donor: Donor;
+  amount: number;
+  date: Date;
+  station: UUID;
+}
+
+type Query {
+  
+}
+
+type error {
+  msg: String!
+}
+
+type Mutation {
+  addDonation(donation: Donation): Donation | Error
+  # updateDonation
+}
